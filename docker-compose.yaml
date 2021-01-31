@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    image: 0809031817/invent_invent
+    image: 0809031817/invent_web
     command: sh -c "python manage.py collectstatic --noinput && gunicorn -w 2 invent.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       #- static_volume:/home/app/static/
