@@ -10,7 +10,7 @@ node {
 
         stage("SSH Steps Rocks!") {
             checkout scm
-            shPut remote: remote, from: 'docker-compose.yaml', into: '/root/'
+            sshPut remote: remote, from: 'docker-compose.yaml', into: '/root/'
             sshCommand remote: remote, command:  '''docker stack deploy -c docker-compose.yml invent'''
             sshCommand remote: remote, command: 'docker service ps'
 
