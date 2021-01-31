@@ -1,6 +1,6 @@
 def remote = [:]
 remote.name = "kub3"
-remote.host = "192.168.61.53"
+remote.host = "192.168.61.52"
 remote.allowAnyHosts = true
 
 node {
