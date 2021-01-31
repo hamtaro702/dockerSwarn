@@ -4,24 +4,23 @@ services:
   web:
     build: .
     image: 0809031817/invent_web
+    deploy:
+      replicas: 3
     command: sh -c "python manage.py collectstatic --noinput && gunicorn -w 2 invent.wsgi:application --bind 0.0.0.0:8000"
     volumes:
-      #- static_volume:/home/app/static/
       - ./static/:/home/app/static/
       - .:/app
     ports:
       - 8000:8000
   nginx:
-    build: ./nginx
     image: 0809031817/invent_nginx
     volumes:
-      #- static_volume:/home/app/static/
       - ./static:/home/app/static/
     expose:
       - "80"
-    # port 80:80 รับมาจาก external เข้าไป map ใน container
     depends_on:
       - web
 
 volumes:
   static_volume:
+
