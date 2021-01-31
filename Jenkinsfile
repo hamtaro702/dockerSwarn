@@ -12,7 +12,7 @@ node {
             checkout scm
             sshPut remote: remote, from: 'docker-compose.yaml', into: '/root/'
             sshCommand remote: remote, command:  '''docker stack deploy -c docker-compose.yaml invent'''
-            sshCommand remote: remote, command: 'docker service ps'
+            sshCommand remote: remote, command: 'docker service ls'
 
             //sshScript remote: remote, script: 'test.sh'
            //sshPut remote: remote, from: 'test.sh', into: '/home/tanabat/'
